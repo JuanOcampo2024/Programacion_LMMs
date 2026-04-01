@@ -1,8 +1,10 @@
-# 🚀 Machine Learning Data Preparation Challenge
+#Juan Pablo Ocampo Soto - jpablo.ocampo1@udea.edu.co
+
+# Machine Learning Data Preparation Challenge
 
 Este repositorio contiene una serie de retos de programación en **Python** enfocados en el preprocesamiento avanzado de datos utilizando `pandas`, `numpy` y `scikit-learn`.
 
-## 📋 Descripción de los Ejercicios
+## Descripción de los Ejercicios
 
 El proyecto se divide en 4 módulos independientes, cada uno abordando un problema del mundo real:
 
@@ -15,7 +17,7 @@ El proyecto se divide en 4 módulos independientes, cada uno abordando un proble
 
 ---
 
-## 🛠️ Estructura de los Scripts
+## Estructura de los Scripts
 
 Cada archivo `.py` sigue una estructura estricta para facilitar la evaluación:
 
