@@ -56,7 +56,7 @@ _CATALOGOS_ORDINALES = {
     'taninos': ['suave', 'moderado', 'astringente'],
 }
 
-def generar_caso_de_uso_preparar_datos():
+def generar_caso_de_uso_0002():
     """
     Genera un caso de prueba aleatorio (input_data, output_esperado).
     """
@@ -107,7 +107,7 @@ def generar_caso_de_uso_preparar_datos():
 
 if __name__ == "__main__":
     # 1. Generar datos de prueba
-    entrada, salida_esperada = generar_caso_de_uso_preparar_datos()
+    entrada, salida_esperada = generar_caso_de_uso_0002()
 
     # 2. Ejecutar tu función
     X_res, y_res = preparar_datos(
@@ -135,4 +135,4 @@ if __name__ == "__main__":
     print("="*60)
 
 def generate_use_case():
-    return generar_caso_de_uso_preparar_datos()
+    return generar_caso_de_uso_0002()
