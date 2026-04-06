@@ -133,3 +133,6 @@ if __name__ == "__main__":
     print(f"   - ¿Valores entre 0 y 1?: {X_res.min() >= 0 and X_res.max() <= 1}")
     print(f"\n✅ VEREDICTO: {'¡PRUEBA SUPERADA EXITOSAMENTE!' if son_iguales else 'ERROR EN LA SALIDA'}")
     print("="*60)
+
+def generate_use_case():
+    return generar_caso_de_uso_preparar_datos()
