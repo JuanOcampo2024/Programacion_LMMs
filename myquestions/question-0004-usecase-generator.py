@@ -90,7 +90,7 @@ def preparar_y_entrenar(df: pd.DataFrame,
         'prep': preprocesador
     }
 
-def generar_caso_de_uso_preparar_datos():
+def generar_caso_de_uso_0004():
     """
     Genera un dataset de consumo eléctrico con estacionalidad horaria.
     """
@@ -132,7 +132,7 @@ def generar_caso_de_uso_preparar_datos():
 
 if __name__ == "__main__":
     # 1. Generar caso
-    entrada, salida_esp = generar_caso_de_uso_preparar_datos()
+    entrada, salida_esp = generar_caso_de_uso_0004()
 
     # 2. Ejecutar función del estudiante
     res = preparar_y_entrenar(**entrada)
@@ -155,4 +155,4 @@ if __name__ == "__main__":
     print("="*70)
 
 def generate_use_case():
-    return generar_caso_de_uso_preparar_datos()
+    return generar_caso_de_uso_0004()
