@@ -127,3 +127,5 @@ if __name__ == "__main__":
 
     print("="*60)
 
+def generate_use_case():
+    return generar_caso_de_uso_preparar_datos()
