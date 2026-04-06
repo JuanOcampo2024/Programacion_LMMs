@@ -42,7 +42,7 @@ def preparar_datos(df: pd.DataFrame,
 
     return X_transformada, y
 
-def generar_caso_de_uso_preparar_datos():
+def generar_caso_de_uso_0001():
     """
     Genera un caso de prueba aleatorio (input_data, output_esperado).
     """
@@ -94,7 +94,7 @@ if __name__ == "__main__":
     print("="*60)
 
     # 1. Generar caso
-    entrada, salida_esperada = generar_caso_de_uso_preparar_datos()
+    entrada, salida_esperada = generar_caso_de_uso_0001()
 
     print(f"🔹 Parámetros aleatorios:")
     print(f"   - Grado Polinomial: {entrada['grado']}")
@@ -128,4 +128,4 @@ if __name__ == "__main__":
     print("="*60)
 
 def generate_use_case():
-    return generar_caso_de_uso_preparar_datos()
+    return generar_caso_de_uso_0001()
