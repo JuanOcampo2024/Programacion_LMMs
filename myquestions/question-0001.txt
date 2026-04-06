@@ -1,0 +1,7 @@
+El Problema — Una planta industrial sospecha que las relaciones entre sus sensores (temperatura, presión, velocidad) son no lineales. Se necesita un pipeline que enriquezca las features, descarte las casi-constantes y escale todo antes de entrenar.
+
+La Misión — Implementar preparar_datos(df, target_col, grado=2, umbral_varianza=0.01) con tres etapas encadenadas en un Pipeline:
+
+PolynomialFeatures(degree=grado) → expande [a, b] a [a, b, a², ab, b²]
+VarianceThreshold(threshold=umbral_varianza) → elimina columnas casi constantes (poco informativas)
+StandardScaler() → estandariza lo que sobrevivió

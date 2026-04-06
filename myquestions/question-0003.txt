@@ -1,0 +1,11 @@
+El Problema — Un banco digital necesita procesar solicitudes de crédito que mezclan columnas numéricas con NaN (ingresos, deudas) y columnas categóricas (tipo de empleo, nivel de estudio). Además, antes de pasar los datos al modelo, quiere filtrar solicitudes sospechosas o con errores graves de captura.
+
+La Misión — preparar_datos(df, target_col, cols_numericas, cols_categoricas, contaminacion) con dos etapas:
+
+ColumnTransformer con dos ramas simultáneas:
+
+Numérica → SimpleImputer(median) + StandardScaler
+Categórica → SimpleImputer(constant='desconocido') + OneHotEncoder
+
+
+IsolationForest → detecta y elimina las filas anómalas (-1), conservando solo las normales (+1)

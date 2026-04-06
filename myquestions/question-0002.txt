@@ -1,0 +1,7 @@
+El Problema — Una bodega de vinos tiene features mixtas: numéricas (pH, alcohol %) y ordinales con orden natural ('seco' < 'semiseco' < 'dulce'). Hay que preparar los datos respetando ese orden y luego quedarse solo con las features estadísticamente más relevantes para predecir la calidad.
+
+La Misión — Implementar preparar_datos(df, target_col, categorias_ordinales, k) con cuatro pasos:
+
+OrdinalEncoder(categories=...) → convierte texto a enteros preservando el orden ('joven'→0, 'roble'→1, 'reserva'→2, 'gran_reserva'→3)
+SelectKBest(f_classif, k=k) → conserva las k features más correlacionadas con el target según un test F de ANOVA
+MinMaxScaler() → normaliza al rango [0, 1]

@@ -1,0 +1,11 @@
+El Problema — Una empresa de energía predice el consumo eléctrico por hora. La demanda tiene dos dificultades simultáneas: las variables temporales son cíclicas (la hora 23 está "cerca" de la 0, pero numéricamente son lejanas) y la distribución de kWh es log-normal con picos extremos, lo que hace que entrenar un modelo directamente sobre Y produzca predicciones sesgadas hacia los valores altos.
+La Misión — Implementar preparar_y_entrenar(df, target_col, cols_exogenas, n_knots=5) con tres responsabilidades encadenadas:
+
+ColumnTransformer con dos ramas paralelas:
+
+SplineTransformer(degree=3, n_knots=n_knots) sobre variables continuas como temperatura y humedad → captura relaciones no lineales tipo curva-U sin explotar en grado alto
+FunctionTransformer(codificar_ciclico) sobre hora y mes → proyecta cada ciclo en un círculo unitario con seno y coseno (hora_sin, hora_cos, mes_sin, mes_cos) para que el modelo "entienda" que las 23h y las 0h son contiguas
+
+
+TransformedTargetRegressor(regressor=Ridge, func=np.log1p, inverse_func=np.expm1) → entrena internamente con log1p(demanda) y al predecir aplica expm1 automáticamente, devolviendo kWh originales sin que el estudiante haga nada extra. Es el único componente del banco que actúa sobre Y en lugar de X.
+Retorna un diccionario con mae, r2, el modelo entrenado y el preprocesador ajustado.
