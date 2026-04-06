@@ -66,7 +66,7 @@ def preparar_datos(df: pd.DataFrame,
 _TIPOS_EMPLEO   = ['formal', 'independiente', 'desempleado']
 _NIVELES_ESTUDIO = ['primaria', 'secundaria', 'universitario', 'posgrado']
 
-def generar_caso_de_uso_preparar_datos():
+def generar_caso_de_uso_0003():
     """
     Genera un caso de prueba aleatorio (input_data, output_esperado).
     """
@@ -122,7 +122,7 @@ def generar_caso_de_uso_preparar_datos():
 
 if __name__ == "__main__":
     # 1. Obtener caso aleatorio
-    entrada, salida_esperada = generar_caso_de_uso_preparar_datos()
+    entrada, salida_esperada = generar_caso_de_uso_0003()
 
     # 2. Ejecutar función del estudiante
     X_res, y_res = preparar_datos(**entrada)
@@ -150,4 +150,4 @@ if __name__ == "__main__":
     print("="*65)
 
 def generate_use_case():
-    return generar_caso_de_uso_preparar_datos()
+    return generar_caso_de_uso_0003()
