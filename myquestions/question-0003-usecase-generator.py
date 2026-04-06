@@ -148,3 +148,6 @@ if __name__ == "__main__":
     else:
         print("\n❌ VEREDICTO: ERROR. Los datos procesados no coinciden con el estándar.")
     print("="*65)
+
+def generate_use_case():
+    return generar_caso_de_uso_preparar_datos()
