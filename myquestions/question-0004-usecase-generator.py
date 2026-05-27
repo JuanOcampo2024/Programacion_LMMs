@@ -22,13 +22,19 @@ from sklearn.metrics import mean_absolute_error, r2_score
 np.random.seed(42)
 random.seed(42)
 
-def codificar_ciclico(X_hm: np.ndarray) -> np.ndarray:
+def codificar_ciclico(X: np.ndarray) -> np.ndarray:
     """
     Transforma [hora, mes] en [sin_hora, cos_hora, sin_mes, cos_mes].
     Esto permite que el modelo entienda que las 23h y las 00h son contiguas.
+    
+    Args:
+        X: Array con forma (n_samples, 2) donde columna 0 es hora y columna 1 es mes
+    
+    Returns:
+        Array con forma (n_samples, 4) con las transformaciones cíclicas
     """
-    hora = X_hm[:, 0]
-    mes  = X_hm[:, 1]
+    hora = X[:, 0]
+    mes  = X[:, 1]
     return np.column_stack([
         np.sin(2 * np.pi * hora / 24),
         np.cos(2 * np.pi * hora / 24),
@@ -130,7 +136,12 @@ def generar_caso_de_uso_0004():
 
     return input_data, output_esperado
 
-if __name__ == "__main__":
+def generate_use_case():
+    """Función llamada por el validador oficial"""
+    return generar_caso_de_uso_0004()
+
+def main():
+    """Función para pruebas locales (solo se ejecuta al correr este archivo directamente)"""
     # 1. Generar caso
     entrada, salida_esp = generar_caso_de_uso_0004()
 
@@ -154,5 +165,5 @@ if __name__ == "__main__":
         print("\n❌ ERROR: Hay una discrepancia en los cálculos del modelo.")
     print("="*70)
 
-def generate_use_case():
-    return generar_caso_de_uso_0004()
+if __name__ == "__main__":
+    main()

@@ -120,7 +120,12 @@ def generar_caso_de_uso_0003():
 
     return input_data, (X_exp, y_exp)
 
-if __name__ == "__main__":
+def generate_use_case():
+    """Función llamada por el validador oficial"""
+    return generar_caso_de_uso_0003()
+
+def main():
+    """Función para pruebas locales (solo se ejecuta al correr este archivo directamente)"""
     # 1. Obtener caso aleatorio
     entrada, salida_esperada = generar_caso_de_uso_0003()
 
@@ -149,5 +154,5 @@ if __name__ == "__main__":
         print("\n❌ VEREDICTO: ERROR. Los datos procesados no coinciden con el estándar.")
     print("="*65)
 
-def generate_use_case():
-    return generar_caso_de_uso_0003()
+if __name__ == "__main__":
+    main()
