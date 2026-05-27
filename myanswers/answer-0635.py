@@ -31,3 +31,27 @@ def seleccionar_top_correlacion(df, target_col, k):
     
     # Retornar los nombres como array numpy
     return top_k.index.to_numpy()
+
+
+def generar_caso_de_uso_seleccionar_top_correlacion():
+    """
+    Generador de casos de uso CORREGIDO para la función seleccionar_top_correlacion.
+    
+    NOTA: El generador original de Paola devolvía (args, None) lo cual es un bug.
+    Este generador corregido devuelve el output esperado correctamente.
+    """
+    rows = np.random.randint(40, 60)
+    target = np.random.rand(rows)
+    df = pd.DataFrame({
+        'feat1': target + np.random.normal(0, 0.01, rows),
+        'feat2': np.random.rand(rows),
+        'target': target
+    })
+    
+    # Argumentos de entrada
+    args = {'df': df, 'target_col': 'target', 'k': 1}
+    
+    # CORRECCIÓN: Calcular el output esperado correctamente
+    output = seleccionar_top_correlacion(df, 'target', 1)
+    
+    return args, output
