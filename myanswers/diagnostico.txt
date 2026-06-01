@@ -1,0 +1,115 @@
+Antes de hacer este diagnostico, me trate de comunicar con ambos compañeros via correo electronico, pero no cambiaron nada al generador de caso.
+
+PREGUNTA 0635 - seleccionar_top_correlacion
+=============================================
+
+ESTADO DEL VALIDADOR:
+  ✗ incorrect output: Value mismatch: None != ['feat1']
+
+ANÁLISIS:
+---------
+
+Mi solución (answer-0635.py)
+  - Función correctamente implementada según especificación
+  - Calcula matriz de correlación
+  - Obtiene correlaciones con target
+  - Elimina correlación del target consigo mismo 
+  - Obtiene valores absolutos 
+  - Ordena descendente y toma top k 
+  - Retorna array numpy con nombres 
+
+Generador original de Paola:
+  Archivo: question-0003-usecase-generator.py
+  Línea 15: return args, None
+  
+PROBLEMA IDENTIFICADO:
+  El generador devuelve None como output esperado 
+  Esto es un ERROR en el generador porque:
+  
+  1. La especificación en question-0003.txt dice:
+     "Retorno: np.ndarray (Un array con los nombres de las k columnas 
+     que tienen el valor absoluto de correlación de Pearson más alto)"
+  
+  2. Mi función CORRECTAMENTE retorna np.ndarray (['feat1'])
+  
+  3. El generador debería calcular y retornar el output esperado:
+     - Línea 15 ACTUAL: return args, None
+     - DEBERÍA SER: 
+       output = seleccionar_top_correlacion(df, 'target', k)
+       return args, output
+
+CONCLUSIÓN:
+  El error está en el generador de Paola que:
+    - Línea 15: Devuelve None en lugar del output calculado, esto hace imposible que cualquier solución coincida
+    - Es un defecto del generador, no de la función
+
+RECOMENDACIÓN:
+  Paola debe corregir línea 15 del generador para que retorne
+  el output esperado correctamente calculado.
+
+--------------------------------------------------------------------
+
+PREGUNTA 0620 - reducir_dimensionalidad
+========================================
+
+ESTADO DEL VALIDADOR:
+  ✗ usecase generator error: Execution error: 
+    reducir_dimensionalidad() missing 2 required positional arguments: 
+    'X' and 'n_componentes'
+
+ANÁLISIS:
+---------
+
+Mi solución (answer-0620.py)
+  - Función correctamente implementada
+  - Recibe X y n_componentes como argumentos 
+  - Crea objeto PCA 
+  - Aplica fit_transform correctamente 
+  - Retorna matriz transformada
+
+Generador original de Jhon:
+  Archivo: question-0004-usecase-generator.py
+  
+PROBLEMA IDENTIFICADO:
+  El generador contiene código de ejemplo que se ejecuta automáticamente:
+  
+  LÍNEA 28-35 (CÓDIGO PROBLEMÁTICO):
+  ```
+  # EJEMPLO DE USO
+  entrada, salida_esperada = generar_caso_de_uso_reducir_dimensionalidad()
+  
+  resultado = reducir_dimensionalidad(
+      entrada["X"],
+      entrada["n_componentes"]
+  )
+  
+  print("\nShape esperado:", salida_esperada.shape)
+  print("Shape obtenido:", resultado.shape)
+  ```
+  
+  Este código se auto-ejecuta cuando el módulo se importa.
+  
+  El error "reducir_dimensionalidad() missing 2 required positional arguments"
+  indica que el código de ejemplo intenta llamar la función pero falla
+  porque no la encuentra en el contexto correcto.
+  
+  La SOLUCIÓN correcta:
+  - Encapsular líneas 28-35 en: if __name__ == '__main__':
+  - Así el código de ejemplo SOLO se ejecuta cuando se corre directo
+  - No cuando el validador importa el módulo
+
+CONCLUSIÓN:
+  El error está en el generador de Jhon que:
+    - Líneas 28-35: Contiene código que se auto-ejecuta
+    - Intenta llamar reducir_dimensionalidad() incorrectamente
+    - Causa error en el validador al importar el módulo
+    - Es un defecto del generador, no de la función
+
+RECOMENDACIÓN:
+  Jhon debe encapsular líneas 28-35 en:
+  ```
+  if __name__ == '__main__':
+      # EJEMPLO DE USO
+      entrada, salida_esperada = generar_caso_de_uso_reducir_dimensionalidad()
+      ...
+  ```
